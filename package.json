@@ -1,0 +1,39 @@
+{
+  "name": "servicedi",
+  "version": "0.1.0",
+  "description": "Node service dependency injection",
+  "main": "index.js",
+  "scripts": {
+    "check": "scripts/check-npm-version.sh && npm run lint && npm run coverage",
+    "coverage": "npx nyc --reporter=html --reporter=text npx mocha",
+    "coverage:upload": "npx nyc --reporter=text-lcov npx mocha | npx coveralls",
+    "lint": "npx standard --fix",
+    "test": "npx mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/everettcaleb/servicedi.git"
+  },
+  "keywords": [
+    "inversion",
+    "dependencies",
+    "services",
+    "di",
+    "injection"
+  ],
+  "author": "Caleb Everett <everettcaleb95@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/everettcaleb/servicedi/issues"
+  },
+  "homepage": "https://github.com/everettcaleb/servicedi#readme",
+  "devDependencies": {
+    "coveralls": "^3.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
