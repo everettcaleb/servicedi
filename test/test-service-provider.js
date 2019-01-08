@@ -1,3 +1,4 @@
+/* global describe it */
 const assert = require('assert')
 const { ServiceProvider } = require('../index')
 
@@ -69,8 +70,7 @@ describe('ServiceProvider', () => {
       try {
         const sp = new ServiceProvider()
         sp.getServiceByProxy(sp.services, 'TEST')
-      }
-      catch(err) {
+      } catch (err) {
         errorThrown = true
       }
 
@@ -187,7 +187,7 @@ describe('ServiceProvider', () => {
     it('should call register (no params) and inject', done => {
       class TestClass1 {}
       class TestClass2 {
-        constructor({ testClass1 }) {
+        constructor ({ testClass1 }) {
           this.test = testClass1
         }
       }

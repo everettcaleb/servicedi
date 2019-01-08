@@ -1,9 +1,9 @@
 class Service {
   constructor (factory, { cleanup, persist, preload } = {}) {
-    if(!factory || typeof factory !== 'function') {
+    if (!factory || typeof factory !== 'function') {
       throw new Error('Factory function must be provided')
     }
-    if(cleanup && typeof cleanup !== 'function') {
+    if (cleanup && typeof cleanup !== 'function') {
       throw new Error('Cleanup option must be a function if provided')
     }
     this._factoryFunction = factory

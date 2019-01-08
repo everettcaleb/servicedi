@@ -1,3 +1,4 @@
+/* global describe it */
 const assert = require('assert')
 const { Service } = require('../index')
 
@@ -54,9 +55,8 @@ describe('Service', () => {
     it('should throw Error if factory is falsy', done => {
       let thrown = false
       try {
-        const service = new Service(null)
-      }
-      catch(err) {
+        Service(null)
+      } catch (err) {
         thrown = true
       }
       assert.ok(thrown)
@@ -66,9 +66,8 @@ describe('Service', () => {
     it('should throw Error if factory is not a function', done => {
       let thrown = false
       try {
-        const service = new Service(42)
-      }
-      catch(err) {
+        Service(42)
+      } catch (err) {
         thrown = true
       }
       assert.ok(thrown)
@@ -79,9 +78,8 @@ describe('Service', () => {
       let thrown = false
       try {
         const factory = () => 42
-        const service = new Service(factory, { cleanup: true })
-      }
-      catch(err) {
+        Service(factory, { cleanup: true })
+      } catch (err) {
         thrown = true
       }
       assert.ok(thrown)
