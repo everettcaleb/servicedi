@@ -1,5 +1,5 @@
-const Service = require('./service')
 const { camelCase } = require('lodash')
+const Service = require('./service')
 
 class ServiceProvider {
   constructor () {
