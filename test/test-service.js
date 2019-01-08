@@ -54,34 +54,40 @@ describe('Service', () => {
 
     it('should throw Error if factory is falsy', done => {
       let thrown = false
+      let service = null
       try {
-        Service(null)
+        service = new Service(null)
       } catch (err) {
         thrown = true
       }
+      assert.ok(!service)
       assert.ok(thrown)
       done()
     })
 
     it('should throw Error if factory is not a function', done => {
       let thrown = false
+      let service = null
       try {
-        Service(42)
+        service = new Service(42)
       } catch (err) {
         thrown = true
       }
+      assert.ok(!service)
       assert.ok(thrown)
       done()
     })
 
     it('should throw Error if cleanup is provided and is not a function', done => {
       let thrown = false
+      let service = null
       try {
         const factory = () => 42
-        Service(factory, { cleanup: true })
+        service = new Service(factory, { cleanup: true })
       } catch (err) {
         thrown = true
       }
+      assert.ok(!service)
       assert.ok(thrown)
       done()
     })
