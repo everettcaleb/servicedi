@@ -3,9 +3,8 @@ const Service = require('./service')
 
 class ServiceProvider {
   constructor () {
-    this.services = {}
     this.cleanupList = []
-    this.injector = new Proxy(this.services, { get: (...x) => this.getServiceByProxy(...x) })
+    this.injector = {}
   }
 
   cleanup () {
@@ -14,26 +13,19 @@ class ServiceProvider {
       service.cleanup()
       service = this.cleanupList.pop()
     }
-    this.services = {}
+    this.injector = {}
   }
 
   get (name) {
-    return this.getServiceByProxy(this.services, name)
-  }
-
-  getServiceByProxy (services, name) {
-    const service = services[name]
-    if (!service) {
-      throw new Error('Failed to inject', name)
-    }
-
-    return service.load(this)
+    return this.injector[name]
   }
 
   register (name, factory, { cleanup, persist, preload } = {}) {
     const service = new Service(factory, { cleanup, persist, preload })
     service.preload(this)
-    this.services[name] = service
+    Object.defineProperty(this.injector, name, {
+      get: () => service.load(this)
+    })
     return this
   }
 

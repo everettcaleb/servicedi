@@ -1,6 +1,6 @@
 {
   "name": "servicedi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Node service dependency injection",
   "main": "index.js",
   "scripts": {

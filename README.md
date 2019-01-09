@@ -19,8 +19,8 @@ Basically, an application can create a `ServiceProvider` instance which acts as 
 
 - `constructor()`: The constructor, nothing special
 - `cleanup()`: Runs all registered `cleanup` functions (finalizers) in reverse registration order and clears registered services
-- `get(name)`: Gets a registered service instance by name, throws an Error if it cannot find a registered service with that name
-- `injector`: `Proxy` object that allows you to get services using destructuring or direct getters
+- `get(name)`: Gets a registered service instance by name, returns undefined it cannot find a registered service with that name
+- `injector`: Object that allows you to get services using destructuring or direct getters
 - `register(name, factory, options)`: Registers a service, see below for registration options
 - `registerConst(name, val, options)`: Registers a constant value as a service (by name), see below for registration options
 - `registerConstructor(Class, options)`: Registers a constructor as a service (converts the name to camelCase, ex: `MyService` is registered as `myService`), see below for registration options
